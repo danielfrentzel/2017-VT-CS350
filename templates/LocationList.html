@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location List</title>
+</head>
+<body>
+    <ul>
+        {% for entry in entries %}
+        <li>
+            {{ entry.location_id }} - {{ entry.location_name }} - {{ entry.location_description }}
+        </li>
+        {% else %}
+        <li>Shit, something went wrong</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
