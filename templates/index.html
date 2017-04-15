@@ -1,15 +1,53 @@
 <!doctype html>
 
 <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <title>Virtual Tour</title>
-      <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>Virtual Tour</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
 
-    <body>
-        <h3>Crested Butte Virtual Tour</h3>
-        <img class = "map" src="https://skimap.org/data/514/1615/1386615966jpg_render.jpg" style = "width:824px;height:618px;"> <br>
-    </body>
+<script>
+
+    var addMode = false;
+
+
+    function photoClick(event) {
+        var x = event.clientX;
+        var y = event.clientY;
+        alert("X cord: " + x + " " + "Y cord: " + y);
+    }
+
+    function switchAddMode() {
+        b = document.getElementById('addButton');
+        if (addMode) {
+            addMode = false;
+            b.innerHTML = 'View Locations';
+        }
+        else {
+            addMode = true;
+            b.innerHTML = 'Add Locations';
+        }
+    }
+
+</script>
+
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <h2>Crested Butte Resort Virtual Tour</h2>
+            </td>
+            <td style="padding-top: 3px; padding-left: 20em">
+                <button type="button" id="addButton" onclick="switchAddMode()">View Locations</button>
+            </td>
+        </tr>
+    </table>
+
+    <img src="https://skimap.org/data/514/1615/1386615966jpg_render.jpg" alt="map" onclick="photoClick(event)" style="width:824px;height:618px;" /> <br>
+</body>
+
+
 </html>
