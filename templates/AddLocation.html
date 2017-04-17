@@ -5,6 +5,20 @@
     <title>Add Location</title>
 </head>
 <body>
+    <script>
+
+        window.onload = getXY;
+
+        function getXY() {
+            var url = window.location.href;
+            var xy = url.split("=");
+            var x = xy[1].slice(0, xy[1].length - 1);
+            var y = xy[2];
+        }
+        
+
+    </script>
+
     <form action="/LocationAdded" method="get">
         ID:<input type="number" name="location_id">
         <br/>
