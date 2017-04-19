@@ -5,6 +5,7 @@
     <title>Location List</title>
 </head>
 <body>
+    <h1>Location List</h1>
     <ul>
         {% for entry in entries %}
         <li>
@@ -14,5 +15,19 @@
         <li>Shit, something went wrong</li>
         {% endfor %}
     </ul>
+
+    <form id="upload-form" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <h3>Upload an Image</h3>
+        Location ID:<input type="number" name="location_id">
+        <br/>
+        Choose one Image: <input type="file" name="file" accept="image/*">
+        <br/>
+        <input type="submit" value="Upload Img">
+    </form>
+    <br/>
+    <form action="/viewImgList">
+        <input type="submit" value="View Image List">
+    </form>
+
 </body>
 </html>
