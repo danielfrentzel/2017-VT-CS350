@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location List</title>
+</head>
+<body>
+    <h1>Location Added</h1>
+    <ul>
+        {% for entry in entries %}
+        <li>
+            {{ entry.location_id }} - {{ entry.location_name }} - {{ entry.location_description }}
+        </li>
+        {% else %}
+        <li>Shit, something went wrong</li>
+        {% endfor %}
+    </ul>
+
+    <form action="/">
+        <input type="submit" value="Map">
+    </form>
+
+</body>
+</html>

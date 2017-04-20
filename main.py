@@ -13,7 +13,14 @@ def connect_db():
 #diplays the add location forum
 @app.route('/AddLocation')
 def addLocation():
-    return render_template('AddLocation.html')
+    db = connect_db()
+    cur = db.execute("select * from locations")
+    entries = [dict(location_id=row[0], location_name=row[1], location_description=row[2]) for row in cur.fetchall()]
+    cur = db.execute("select * from pictures")
+    pictures = [dict(location_id=row[0], file_location=row[1]) for row in cur.fetchall()]
+    db.close()
+    db.close()
+    return render_template('AddLocation.html', entries=entries, pictures=pictures)
 
 #adds locations from /AddLocation forum and displays list of the locations in db. Also allows user to upload img
 @app.route('/LocationAdded')
@@ -25,11 +32,10 @@ def addLocations():
     db = connect_db()
     sql = "insert into locations (location_id, location_name, location_description) values (?, ?, ?)"
     db.execute(sql, [location_id, location_name, location_description])
+    entries = [dict(location_id = location_id, location_name=location_name, location_description=location_description)]
     db.commit()
-    cur = db.execute("select * from locations")
-    entries = [dict(location_id=row[0], location_name=row[1], location_description=row[2]) for row in cur.fetchall()]
     db.close()
-    return render_template('LocationList.html', entries=entries)
+    return render_template('LocationAdded.html', entries=entries)
 
 #uploads images from /locationAdded forum and then displays img list
 @app.route("/upload", methods=["POST"])
@@ -52,32 +58,13 @@ def upload():
     db = connect_db()
     sql = "insert into pictures (location_id, img1) values (?, ?)"
     db.execute(sql, [location_id, "imgs/" + filename])
+    entries = [dict(location_id = location_id, file_location = "imgs/" + filename)]
     db.commit()
-    cur = db.execute("select * from pictures")
-    entries = [dict(location_id=row[0], file_location=row[1]) for row in cur.fetchall()]
     db.close()
 
-    return render_template("complete.html", entries=entries)
+    return render_template("ImgUploaded.html", entries=entries)
 
-#displays location list and allows user to upload images
-@app.route("/LocationList")
-def LocationList():
-    db = connect_db()
-    cur = db.execute("select * from locations")
-    entries = [dict(location_id=row[0], location_name=row[1], location_description=row[2]) for row in cur.fetchall()]
-    db.close()
 
-    return render_template('LocationList.html', entries=entries)
-
-#displays img list
-@app.route("/viewImgList")
-def viewImgList():
-    db = connect_db()
-    cur = db.execute("select * from pictures")
-    entries = [dict(location_id=row[0], file_location=row[1]) for row in cur.fetchall()]
-    db.close()
-
-    return render_template("complete.html", entries=entries)
 
 #displays map and options
 @app.route('/')
