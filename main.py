@@ -21,7 +21,7 @@ def addLocations():
     location_id = request.args.get('location_id')
     location_name = request.args.get('location_name')
     location_description = request.args.get('location_description')
-
+    # ukygt
     db = connect_db()
     sql = "insert into locations (location_id, location_name, location_description) values (?, ?, ?)"
     db.execute(sql, [location_id, location_name, location_description])
