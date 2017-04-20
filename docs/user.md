@@ -1,3 +1,3 @@
 <h1>User Documentation</h1>
 
-
+We are making the Tour dynamic. So far we allow the user to click on a new point on the map which provides the coordinates for the new interest point. Once clicked on, it takes the user to a forum which allows the user to enter the name and description of the location. Once submitted it takes the user to the list of locations. Here the user can enter an id and upload an image in a forum, once submitted the image is saved into the files and its location is saved in the database and the image list is displayed. Both the Image list and location list can be displayed without submitting the forums. Now we need save the x and y coordinates in the database and display them when the web page is initially loaded. We also would like to add the option to upload multiple images once we get everything working. 
