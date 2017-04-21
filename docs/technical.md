@@ -1,1 +1,3 @@
-This is the technical documentation!
+<h1>Technical Documentation</h1>
+
+We are building the tour with Flask, Python, SQLite, and JQuery. Flask is used for the backend development, including writing and reading the SQL database. When adding a new location pin, JQuery is used to get and store the x and y coordinates in the url. Flash reads these coordinates and adds them to the database when uploaded. When adding locations, Flask takes the upload information and puts them in the pictures table. At the index, the locations table is read and pins are put on the map for all the unique locations. When a pin is selected, all the pictures for that pin id are collected from the pictures table and displayed in a carousel using JQuery.
