@@ -1,5 +1,5 @@
  This is the index of the docs:
  
  <a href="https://danielfrentzel.github.io/2017-VT-CS350/user">User Documentation</a> <br/>
- <a href="https://danielfrentzel.github.io/2017-VT-CS350/technical">Developer Documentation</a>
+ <a href="https://danielfrentzel.github.io/2017-VT-CS350/technical">Technical Documentation</a>
  
