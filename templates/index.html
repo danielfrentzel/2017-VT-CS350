@@ -14,11 +14,12 @@
 
 
     function photoClick(event) {
-        var x = event.clientX;
-        var y = event.clientY;
-        //alert("X cord: " + x + " " + "Y cord: " + y);
-        window.open("AddLocation?x=" + x +"&y=" + y, "_self");
-
+        if (addMode == true){
+            var x = event.clientX;
+            var y = event.clientY;
+            //alert("X cord: " + x + " " + "Y cord: " + y);
+            window.open("AddLocation?x=" + x +"&y=" + y, "_self");
+        }
     }
 
     function switchAddMode() {
