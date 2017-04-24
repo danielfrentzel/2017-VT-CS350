@@ -42,6 +42,8 @@ def addLocations():
     entries = [dict(location_name=location_name, location_description=location_description, location_x=location_x, location_y=location_y)]
     db.commit()
     db.close()
+    x=0
+    y=0
     return render_template('LocationAdded.html', entries=entries)
 
 #uploads images from /locationAdded forum and then displays img list
