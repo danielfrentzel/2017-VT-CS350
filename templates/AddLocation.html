@@ -5,29 +5,39 @@
     <title>Add Location</title>
 </head>
 <body>
-    <script>
-
-        window.onload = getXY;
-
-        function getXY() {
-            var url = window.location.href;
-            var xy = url.split("=");
-            var x = xy[1].slice(0, xy[1].length - 1);
-            var y = xy[2];
-            alert(x + " " + y);
-        }
-        
-
-    </script>
 
     <form action="/LocationAdded" method="get">
-        ID:<input type="number" name="location_id">
+        <h3>Add new location at x={{ x }} and y={{ y }}</h3>
+        <p>Name:</p><input type="text" name="location_name">
         <br/>
-        Name:<input type="text" name="location_name">
-        <br/>
-        Description:<input type="text" name="location_description">
+        <p>Description:</p><input type="text" name="location_description">
         <br/>
         <input type="submit" value="Submit"/>
     </form>
+
+    <h1>Location List</h1>
+    <ul>
+        {% for entry in entries %}
+        <li>
+            {{ entry.location_id }} - {{ entry.location_name }} - {{ entry.location_description }} - {{ entry.location_x }} - {{ entry.location_y }}
+        </li>
+        {% else %}
+        <li>Shit, something went wrong</li>
+        {% endfor %}
+    </ul>
+
+    <br/>
+
+    <h1>Picture List</h1>
+    <ul>
+        {% for pic in pictures %}
+        <li>
+            {{ pic.location_id }} - {{ pic.file_location }}
+        </li>
+        {% else %}
+        <li>Shit, something went wrong</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>

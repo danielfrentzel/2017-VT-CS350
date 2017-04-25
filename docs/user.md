@@ -1,1 +1,3 @@
-This is the user documentation
+<h1>User Documentation</h1>
+
+The initial page contains a map of Crested Butte Mountain Resort. A toggle is placed above and on the right side of the map. This toggle switches between view mode, the default, and add mode. While on view mode, you can click pins on the map. Each pin represents a location on the mountain where photos have been uploaded depicting that location. When a pin is clicked, a carousel will appear displaying a slideshow of the pictures corresponding to the pin. While on add mode, the user can click on an area of the map to upload photos to that isn’t already occupied by another pin. By clicking the map in a new area, you are taken to another page where you can upload photos that will be linked to a pin that is created at the clicked location. While in add mode, if you click on an existing pin, you can add images the existing locations.
