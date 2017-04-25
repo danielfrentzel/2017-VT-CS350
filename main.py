@@ -33,8 +33,8 @@ def addLocations():
     global x, y
     location_name = request.args.get('location_name')
     location_description = request.args.get('location_description')
-    location_x = x
-    location_y = y
+    location_x = str(int(x) - 16)
+    location_y = str(int(y) - 25)
 
     db = connect_db()
     sql = "insert into locations (location_name, location_description, location_x, location_y) values (?, ?, ?, ?)"
@@ -78,7 +78,11 @@ def upload():
 #displays map and options
 @app.route('/')
 def index():
-    return render_template('index.html')
+    db = connect_db()
+    cur = db.execute("select * from locations")
+    entries = [dict(location_id=row[0], location_name=row[1], location_description=row[2], location_x=row[3],
+                    location_y=row[4]) for row in cur.fetchall()]
+    return render_template('index.html', entries=entries, IMG_ROOT=APP_ROOT + "\imgs\pin.png")
 
 if __name__ == "__main__":
     app.run()
