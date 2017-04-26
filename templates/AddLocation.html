@@ -5,6 +5,11 @@
     <title>Add Location</title>
 </head>
 <body>
+    <script>
+        function delete-location(location_id){
+            window.open("DeleteLocation?id=" + location_id, "_self");
+        }
+    </script>
 
     <form action="/LocationAdded" method="get">
         <h3>Add new location at x={{ x }} and y={{ y }}</h3>
@@ -38,6 +43,12 @@
         <li>Shit, something went wrong</li>
         {% endfor %}
     </ul>
+
+    <form action="/DeleteLocation">
+        <h1>Delete Location</h1>
+        <p>Location Id:</p><input type="number" name="location_id"/>
+        <input type="submit" value="Delete">
+    </form>
 
 </body>
 </html>
