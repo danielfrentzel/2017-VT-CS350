@@ -10,11 +10,11 @@
 
 <script>
 
-    var addMode = false;
+    var mode = 0;
 
 
     function photoClick(event) {
-        if (addMode == true){
+        if (mode == 1){
             var x = event.clientX;
             var y = event.clientY;
             //alert("X cord: " + x + " " + "Y cord: " + y);
@@ -24,13 +24,17 @@
 
     function switchAddMode() {
         b = document.getElementById('addButton');
-        if (addMode) {
-            addMode = false;
-            b.innerHTML = 'View Locations';
+        if (mode == 0) {
+            mode = 1;
+            b.innerHTML = 'Add Locations';
+        }
+        else if (mode == 1) {
+            mode = 2;
+            b.innerHTML = "Delete Locations"
         }
         else {
-            addMode = true;
-            b.innerHTML = 'Add Locations';
+            mode = 0;
+            b.innerHTML = 'View Locations';
         }
     }
 

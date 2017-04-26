@@ -6,3 +6,5 @@ CREATE TABLE locations
     [location_x] text NOT NULL,
     [location_y] text NOT NULL
 );
+
+

@@ -4,10 +4,8 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-x=0
-y=0
+x = 0
+y = 0
 
 DATABASE = 'myapp.db'
 def connect_db():
@@ -82,7 +80,7 @@ def index():
     cur = db.execute("select * from locations")
     entries = [dict(location_id=row[0], location_name=row[1], location_description=row[2], location_x=row[3],
                     location_y=row[4]) for row in cur.fetchall()]
-    return render_template('index.html', entries=entries, IMG_ROOT=APP_ROOT + "\imgs\pin.png")
+    return render_template('index.html', entries=entries)
 
 if __name__ == "__main__":
     app.run()
