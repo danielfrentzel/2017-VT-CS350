@@ -12,6 +12,11 @@
 
     var addMode = false;
 
+    function pinClicked(location_id) {
+        if (addMode == true){
+            window.open("UploadImg?location_id=" + location_id, "_self");
+        }
+    }
 
     function photoClick(event) {
         if (addMode == true){
@@ -53,7 +58,7 @@
 
     {% if entries %}
         {% for entry in entries %}
-            <img style="position:absolute; TOP:{{ entry.location_y }}px; LEFT:{{ entry.location_x }}px" src="\static\imgs\pin.png" id="{{ entry.location_id }}">
+            <img onclick="pinClicked({{ entry.location_id }})" style="position:absolute; TOP:{{ entry.location_y }}px; LEFT:{{ entry.location_x }}px" src="\static\imgs\pin.png" id="{{ entry.location_id }}">
         {% endfor %}
     {% endif %}
 </body>
