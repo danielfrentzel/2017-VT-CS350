@@ -8,6 +8,7 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 x=0
 y=0
+location_id = 0
 
 DATABASE = 'myapp.db'
 def connect_db():
@@ -46,12 +47,18 @@ def addLocations():
     y=0
     return render_template('LocationAdded.html', entries=entries)
 
-#uploads images from /locationAdded forum and then displays img list
+@app.route("/UploadImg")
+def UploadImg():
+    global location_id
+    location_id = request.args.get('location_id')
+
+    return render_template("UploadImg.html", location_id=location_id)
+
+#uploads images from /UploadImg forum and then displays img list
 @app.route("/upload", methods=["POST"])
 def upload():
-    target = os.path.join(APP_ROOT, 'imgs/')
-    print(target)
-    location_id = request.args.get('location_id')
+    target = os.path.join(APP_ROOT, 'static/imgs/')
+    global location_id
 
     if not os.path.isdir(target):
         os.mkdir(target)
@@ -65,8 +72,8 @@ def upload():
 
 
     db = connect_db()
-    sql = "insert into pictures (location_id, img1) values (?, ?)"
-    db.execute(sql, [location_id, "imgs/" + filename])
+    sql = "insert into pictures (location_id, img_path) values (?, ?)"
+    db.execute(sql, [location_id, "static/imgs/" + filename])
     entries = [dict(location_id = location_id, file_location = "imgs/" + filename)]
     db.commit()
     db.close()

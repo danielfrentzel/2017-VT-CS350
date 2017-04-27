@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Img</title>
+</head>
+<body>
+    <form id="upload-form" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <h3>Upload an Image</h3>
+        <p>Location ID:<input type="number" name="locationId" value="{{ location_id }}" readonly/></p>
+        <p>Choose one Image: <input type="file" name="file" accept="image/*"/></p>
+
+        <input type="submit" value="Upload Image">
+    </form>
+</body>
+</html>
