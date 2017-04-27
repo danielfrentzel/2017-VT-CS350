@@ -98,6 +98,11 @@ def DeleteLocation():
 
     return render_template("LocationDeleted.html", entries=entries)
 
+@app.route('/<location_id>')
+def viewLocation(location_id):
+    return "ID: %s" % location_id
+
+
 #displays map and options
 @app.route('/')
 def index():

@@ -16,6 +16,9 @@
         if (addMode == true){
             window.open("UploadImg?location_id=" + location_id, "_self");
         }
+        else if (addMode == false) {
+            window.open(location_id, "_self");
+        }
     }
 
     function photoClick(event) {
@@ -38,6 +41,8 @@
             b.innerHTML = 'Add Locations';
         }
     }
+
+
 
 </script>
 
