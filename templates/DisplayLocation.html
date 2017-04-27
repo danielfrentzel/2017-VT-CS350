@@ -2,12 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/LocationStyle.css">
     <title>{% for entry in entries %}{{ entry.location_name }}{% endfor %}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </head>
 <body>
+    <div class="center">
     <h1>{% for entry in entries %}{{ entry.location_name }}{% endfor %}</h1>
-    {% for pic in pictures %}
-        <img src="{{ pic.img_path }}">
-    {% endfor %}
+    <div id="slider">
+        <ul class="slides">
+            {% for pic in pictures %}
+            <li class="slide"><img src="{{ pic.img_path }}"></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <p>{% for entry in entries %}{{ entry.location_description }}{% endfor %}</p>
+    <button class="left" onclick="slideLeft()">Left</button><button class="right" onclick="slideRight">Right</button>
+    </div>
+    <script>
+        var numImg = $('.slide').length;
+        var maxRight = (720 * numImg) - 720;
+
+        $(".right").click(function(){
+            if ($('#slider .slides').css('margin-left') == (-maxRight + "px")){
+                $('#slider .slides').animate({'margin-left': '0px'}, 1000);
+            }else{
+                $('#slider .slides').animate({'margin-left': '-=720px'}, 1000);
+            }
+        });
+        $(".left").click(function(){
+            if ($('#slider .slides').css('margin-left') == '0px'){
+                $('#slider .slides').animate({'margin-left': -maxRight + "px"}, 1000);
+            }else{
+                $('#slider .slides').animate({'margin-left': '+=720px'}, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
