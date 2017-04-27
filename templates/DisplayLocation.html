@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% for entry in entries %}{{ entry.location_name }}{% endfor %}</title>
+</head>
+<body>
+    <h1>{% for entry in entries %}{{ entry.location_name }}{% endfor %}</h1>
+    {% for pic in pictures %}
+        <img src="{{ pic.img_path }}">
+    {% endfor %}
+</body>
+</html>
