@@ -28,7 +28,7 @@ def addLocation():
     db.close()
     return render_template('AddLocation.html', entries=entries, pictures=pictures, x=x, y=y)
 
-#adds locations from /AddLocation forum and displays list of the locations in db. Also allows user to upload img
+#adds locations from /AddLocation forum and renders a 'complete' template
 @app.route('/LocationAdded')
 def addLocations():
     global x, y
@@ -47,6 +47,7 @@ def addLocations():
     y=0
     return render_template('LocationAdded.html', entries=entries)
 
+#renders the coorisponding template for uploading an img to a location
 @app.route("/UploadImg")
 def UploadImg():
     global location_id
@@ -54,7 +55,7 @@ def UploadImg():
 
     return render_template("UploadImg.html", location_id=location_id)
 
-#uploads images from /UploadImg forum and then displays img list
+#uploads images from /UploadImg and renders a template to alert user when the img is uploaded
 @app.route("/upload", methods=["POST"])
 def upload():
     target = os.path.join(APP_ROOT, 'static/imgs/')
