@@ -71,7 +71,22 @@ def upload():
 
     return render_template("ImgUploaded.html", entries=entries)
 
+#used for deleting the location in the database from all the tables
+@app.route('/DeleteLocation')
+def DeleteLocation():
+    location_id = request.args.get('location_id')
+    db = connect_db()
+    sql = "Select * from locations where location_id = (?)"
+    cur = db.execute(sql, [location_id])
+    entries = [dict(location_id=row[0], location_name=row[1], location_description=row[2]) for row in cur.fetchall()]
+    sql = "DELETE FROM locations WHERE location_id = (?)"
+    db.execute(sql, [location_id])
+    sql = "DELETE FROM pictures WHERE location_id = (?)"
+    db.execute(sql, [location_id])
+    db.commit()
+    db.close()
 
+    return render_template("LocationDeleted.html", entries=entries)
 
 #displays map and options
 @app.route('/')
