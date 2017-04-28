@@ -100,7 +100,16 @@ def DeleteLocation():
 
 @app.route('/<location_id>')
 def viewLocation(location_id):
-    return "ID: %s" % location_id
+    db = connect_db()
+    sql = "Select * from locations where location_id = (?)"
+    cur = db.execute(sql, [location_id])
+    entries = [dict(location_id=row[0], location_name=row[1], location_description=row[2]) for row in cur.fetchall()]
+    sql = "Select * from pictures where location_id = (?)"
+    cur = db.execute(sql, [location_id])
+    pictures = [dict(id=row[0], location_id=row[1], img_path=row[2]) for row in cur.fetchall()]
+    db.close()
+
+    return render_template("DisplayLocation.html", entries=entries, pictures=pictures)
 
 
 #displays map and options

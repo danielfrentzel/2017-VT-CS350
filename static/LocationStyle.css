@@ -1,0 +1,29 @@
+.center{
+    margin: auto;
+    width: 50%;
+    border: 3px solid red;
+    padding: 10px;
+    text-align: center;
+}
+img {
+    width: 720px;
+    height: 400px;
+}
+#slider{
+    width: 720px;
+    height: 400px;
+    overflow: hidden;
+}
+#slider .slides {
+    display: block;
+    width: 4320px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+#slider .slide {
+    float: left;
+    list-style-type: none;
+    width: 720px;
+    height: 400px;
+}
