@@ -12,5 +12,25 @@
 
         <input type="submit" value="Upload Image">
     </form>
+    <h1>Image List</h1>
+    <p>Img ID - Location ID - Image Location</p>
+    <ul>
+        {% for pic in pictures %}
+        <li>
+            {{ pic.id }} - {{ pic.location_id }} - {{ pic.file_location }}
+        </li>
+        {% else %}
+        <li>No Images</li>
+        {% endfor %}
+    </ul>
+
+    <form action="/DeleteImage">
+        <h1>Delete Image</h1>
+        <p>Image Id:</p><input type="number" name="img_id"/>
+        <input type="submit" value="Delete">
+    </form>
+    <form action="/">
+        <input type="submit" value="Map">
+    </form>
 </body>
 </html>
