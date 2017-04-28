@@ -27,20 +27,7 @@
             {{ entry.location_id }} - {{ entry.location_name }} - {{ entry.location_description }} - {{ entry.location_x }} - {{ entry.location_y }}
         </li>
         {% else %}
-        <li>Shit, something went wrong</li>
-        {% endfor %}
-    </ul>
-
-    <br/>
-
-    <h1>Picture List</h1>
-    <ul>
-        {% for pic in pictures %}
-        <li>
-            {{ pic.location_id }} - {{ pic.file_location }}
-        </li>
-        {% else %}
-        <li>Shit, something went wrong</li>
+        <li>No Locations</li>
         {% endfor %}
     </ul>
 
@@ -49,6 +36,8 @@
         <p>Location Id:</p><input type="number" name="location_id"/>
         <input type="submit" value="Delete">
     </form>
-
+    <form action="/">
+            <input type="submit" value="Map">
+    </form>
 </body>
 </html>

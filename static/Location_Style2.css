@@ -1,3 +1,7 @@
+button, input{
+    margin: 5px;
+}
+
 .center{
     margin: auto;
     width: 50%;

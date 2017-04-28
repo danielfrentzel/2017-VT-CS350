@@ -2,26 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="static/LocationStyle.css">
+    <link rel="stylesheet" href="static/Location_Style2.css">
     <title>{% for entry in entries %}{{ entry.location_name }}{% endfor %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="center">
     <h1>{% for entry in entries %}{{ entry.location_name }}{% endfor %}</h1>
-    <div id="slider">
+    {% block content %}
+        {% if pictures %}
+        <div id="slider">
         <ul class="slides">
-            {% for pic in pictures %}
-            <li class="slide"><img src="{{ pic.img_path }}"></li>
-            {% endfor %}
+                {% for pic in pictures %}
+                <li class="slide"><img src="{{ pic.img_path }}"></li>
+                {% endfor %}
         </ul>
-    </div>
-    <p>{% for entry in entries %}{{ entry.location_description }}{% endfor %}</p>
-    <button class="left" onclick="slideLeft()">Left</button><button class="right" onclick="slideRight">Right</button>
+        </div>
+        {% else %}
+               <button class="slide" onclick="uploadImage({{ location_id }})">Upload Image</button>
+        {% endif %}
+        {% endblock content %}
+        {% if pictures %}
+            <button class="left" onclick="slideLeft()">Left</button><button class="right" onclick="slideRight">Right</button>
+        {% endif %}
+        <p>{% for entry in entries %}{{ entry.location_description }}{% endfor %}</p>
+        <form action="/">
+            <input type="submit" value="Map">
+        </form>
     </div>
     <script>
         var numImg = $('.slide').length;
         var maxRight = (720 * numImg) - 720;
+
+        function uploadImage(location_id) {
+            window.open("UploadImg?location_id=" + location_id, "_self");
+        }
 
         $(".right").click(function(){
             if ($('#slider .slides').css('margin-left') == (-maxRight + "px")){

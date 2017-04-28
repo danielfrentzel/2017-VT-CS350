@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Img Deleted</title>
+</head>
+<body>
+    <h1>Img Deleted</h1>
+    {% for entry in entries %}
+        <p>{{ entry.img_id }} - {{ entry.location_id }} - {{ entry.img_path }}</p>
+    {% endfor %}
+    <form action="/">
+        <input type="submit" value="Map">
+    </form>
+</body>
+</html>
