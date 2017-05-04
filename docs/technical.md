@@ -1,10 +1,10 @@
 <h1>Technical Documentation</h1>
 
-<strong>General Background</strong>: </p>The tour is built with Flask, Python, SQLite, JavaScript, and Jquery. Flask is used for the backend development, including writing and reading the SQL database. When the index is loaded, flask is used to reach into the locations table of the database and place the pin icon at all the locations.</p>
+<strong>General Background</strong>: <p>The tour is built with Flask, Python, SQLite, JavaScript, and Jquery. Flask is used for the backend development, including writing and reading the SQL database. When the index is loaded, flask is used to reach into the locations table of the database and place the pin icon at all the locations.</p>
 
 
 <h2>Index</h2>
-</p>A boolean is used to toggle with the button between add and view mode. Each pin was created with an onclick function. </p>
+<p>A boolean is used to toggle with the button between add and view mode. Each pin was created with an onclick function. </p>
 
 <strong>Viewing Locations</strong>: <p>When the boolean is on view mode, the user must click on a location pin. Upon clicking a pin, a function is called that loads DisplayLocation, remembering the pin id. </p>
 
