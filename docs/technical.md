@@ -1,16 +1,16 @@
 <h1>Technical Documentation</h1>
 
-<strong>General Background</strong>: <p>The tour is built with Flask, Python, SQLite, JavaScript, and Jquery. Flask is used for the backend development, including writing and reading the SQL database. When the index is loaded, flask is used to reach into the locations table of the database and place the pin icon at all the locations.</p>
+<strong>General Background</strong>: The tour is built with Flask, Python, SQLite, JavaScript, and Jquery. Flask is used for the backend development, including writing and reading the SQL database. When the index is loaded, flask is used to reach into the locations table of the database and place the pin icon at all the locations.
 
 
 <h2>Index</h2>
-<p>A boolean is used to toggle with the button between add and view mode. Each pin was created with an onclick function. </p>
+A boolean is used to toggle with the button between add and view mode. Each pin was created with an onclick function.
 
-<strong>Viewing Locations</strong>: <p>When the boolean is on view mode, the user must click on a location pin. Upon clicking a pin, a function is called that loads DisplayLocation, remembering the pin id. </p>
+<strong>Viewing Locations</strong>: When the boolean is on view mode, the user must click on a location pin. Upon clicking a pin, a function is called that loads DisplayLocation, remembering the pin id.
 
-<strong>Adding to an existing location</strong>: <p>When the boolean is on add mode, the user can click on and add pictures to an existing pin. This time when the pin is clicked, the user is taken to an upload page using Flask to remember the pin id that was clicked.</p>
+<strong>Adding to an existing location</strong>: When the boolean is on add mode, the user can click on and add pictures to an existing pin. This time when the pin is clicked, the user is taken to an upload page using Flask to remember the pin id that was clicked.
 
-<strong>Adding a new location</strong>: <p>When the boolean is on add mode, the user can click on the map where there isn't an exisiting pin to add a new pin. The click triggers a function that open the add location page and memembers the x and y screen coordinates of the click by placing them in the url of the opened page.</p>
+<strong>Adding a new location</strong>: When the boolean is on add mode, the user can click on the map where there isn't an exisiting pin to add a new pin. The click triggers a function that open the add location page and memembers the x and y screen coordinates of the click by placing them in the url of the opened page.
 
 
 <h2>DisplayLocation Page</h2> 
