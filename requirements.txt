@@ -1,4 +1,5 @@
 certifi==2018.4.16
+flask==0.12.2
 gunicorn==19.9.0
 pipenv==2018.7.1
 virtualenv==16.0.0
