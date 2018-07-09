@@ -10,9 +10,12 @@ x=0
 y=0
 location_id = 0
 
+
+ROOT = os.path.dirname(os.path.realpath(__file__))
 DATABASE = 'myapp.db'
+
 def connect_db():
-    return sqlite3.connect(DATABASE)
+    return sqlite3.connect(os.path.join(ROOT, DATABASE))
 
 #renders map and locations
 @app.route('/')
